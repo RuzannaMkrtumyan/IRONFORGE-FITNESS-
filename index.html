@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Iron Gym | Forge Your Legacy</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Gold's Gym | Stronger Starts Here</title>
+    <!-- Google Fonts: Montserrat for bold athletic headings, Open Sans for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0f0f0f;
-            --bg-card: #1a1a1a;
-            --text-main: #f5f5f5;
-            --text-muted: #a0a0a0;
-            --accent: #ff4500;
-            --accent-hover: #ff6a33;
-            --gradient: linear-gradient(135deg, #ff4500 0%, #ff8c00 100%);
+            --gold: #FFDD00;
+            --gold-hover: #E6C700;
+            --black: #000000;
+            --dark-gray: #111111;
+            --medium-gray: #1A1A1A;
+            --white: #FFFFFF;
+            --text-muted: #B0B0B0;
         }
 
         * {
@@ -30,21 +30,25 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
         }
 
         a {
             text-decoration: none;
             color: inherit;
+            transition: color 0.3s;
         }
 
         .container {
@@ -53,53 +57,98 @@
             padding: 0 20px;
         }
 
-        /* --- HEADER & NAV --- */
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        /* --- HEADER --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 15, 15, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid var(--gold);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
         .logo {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .logo span {
-            color: var(--text-main);
+        
+        .logo i {
+            font-size: 1.5rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
+            align-items: center;
         }
 
         .nav-links a {
-            font-weight: 500;
-            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--white);
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--gold);
         }
 
         .menu-toggle {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--gold);
             cursor: pointer;
         }
 
@@ -108,45 +157,49 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%), 
                         url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--black), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: 5rem;
             margin-bottom: 20px;
-            line-height: 1.1;
+            color: var(--white);
         }
 
         .hero-content h1 span {
-            color: var(--accent);
+            color: var(--gold);
+            display: block;
         }
 
         .hero-content p {
             font-size: 1.2rem;
             color: var(--text-muted);
+            margin-bottom: 35px;
             max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: var(--gradient);
-            color: white;
             font-weight: 600;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
         }
 
         /* --- SECTIONS GENERAL --- */
@@ -154,173 +207,292 @@
             padding: 100px 0;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--white);
             margin-bottom: 15px;
         }
 
-        .section-subtitle {
-            text-align: center;
+        .section-header h2 span {
+            color: var(--gold);
+        }
+
+        .section-header p {
             color: var(--text-muted);
-            margin-bottom: 60px;
             font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* --- PROGRAMS --- */
-        .programs-grid {
+        /* --- LEGACY SECTION --- */
+        .legacy {
+            background-color: var(--dark-gray);
+            border-top: 1px solid #222;
+        }
+
+        .legacy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .program-card {
-            background: var(--bg-card);
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s, border 0.3s;
-            border: 1px solid transparent;
+        .legacy-image {
+            position: relative;
         }
 
-        .program-card:hover {
-            transform: translateY(-10px);
-            border: 1px solid var(--accent);
+        .legacy-image img {
+            width: 100%;
+            border-radius: 8px;
+            filter: grayscale(100%) contrast(1.2);
+            transition: filter 0.5s;
         }
 
-        .program-card i {
-            font-size: 3rem;
-            color: var(--accent);
+        .legacy-image:hover img {
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        .legacy-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .legacy-content h2 {
+            font-size: 2.8rem;
             margin-bottom: 20px;
         }
 
-        .program-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        .legacy-content h2 span {
+            color: var(--gold);
         }
 
-        /* --- PRICING --- */
-        #pricing {
-            background: #141414;
+        .legacy-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
         }
 
-        .pricing-grid {
+        .quote {
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+            margin-top: 30px;
+            font-style: italic;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .quote span {
+            display: block;
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--gold);
+            font-style: normal;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- TRAINING PILLARS --- */
+        .training {
+            background-color: var(--black);
+        }
+
+        .training-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .price-card {
-            background: var(--bg-card);
-            border-radius: 15px;
-            padding: 40px;
+        .training-card {
+            background: var(--medium-gray);
+            padding: 50px 30px;
+            border-radius: 8px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .price-card.featured {
-            border: 2px solid var(--accent);
-            transform: scale(1.05);
+        .training-card:hover {
+            border-bottom: 4px solid var(--gold);
+            transform: translateY(-10px);
         }
 
-        .price-card.featured::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--gradient);
-            color: white;
-            padding: 5px 40px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transform: rotate(45deg);
+        .training-card i {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
         }
 
-        .price-card h3 {
-            font-size: 1.8rem;
+        .training-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .training-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- STATS SECTION --- */
+        .stats {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            color: var(--gold);
             margin-bottom: 10px;
         }
 
-        .price {
-            font-size: 3rem;
+        .stat-item p {
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            color: var(--accent);
-            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
         }
 
-        .price span {
-            font-size: 1rem;
-            color: var(--text-muted);
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background-color: var(--gold);
+            color: var(--black);
+            text-align: center;
+            padding: 80px 0;
         }
 
-        .price-features {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
-        .price-features li {
-            margin-bottom: 15px;
-            color: var(--text-muted);
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
-        .price-features li i {
-            color: var(--accent);
-            margin-right: 10px;
+        .btn-black {
+            background-color: var(--black);
+            color: var(--gold);
+        }
+
+        .btn-black:hover {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         /* --- FOOTER --- */
         footer {
-            background: #0a0a0a;
-            padding: 60px 0 20px;
+            background-color: var(--dark-gray);
+            padding: 80px 0 30px;
             border-top: 1px solid #222;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .footer-col h4 {
-            margin-bottom: 20px;
-            color: var(--accent);
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
         }
 
-        .footer-col p, .footer-col a {
+        .footer-col p {
             color: var(--text-muted);
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
-        .footer-col a:hover {
-            color: var(--text-main);
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .socials a {
-            display: inline-block;
-            font-size: 1.5rem;
-            margin-right: 15px;
-            color: var(--text-muted);
+            width: 40px;
+            height: 40px;
+            background: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s;
         }
 
         .socials a:hover {
-            color: var(--accent);
+            background: var(--gold);
+            color: var(--black);
         }
 
         .copyright {
             text-align: center;
             color: #555;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-top: 1px solid #222;
-            padding-top: 20px;
+            padding-top: 30px;
         }
 
         /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .legacy-grid {
+                grid-template-columns: 1fr;
+            }
+            .legacy-badge {
+                right: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -328,16 +500,16 @@
 
             .nav-links {
                 position: absolute;
-                top: 70px;
+                top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--bg-dark);
+                background: var(--black);
                 flex-direction: column;
                 align-items: center;
-                padding: 20px 0;
-                gap: 20px;
+                padding: 30px 0;
+                gap: 25px;
                 display: none;
-                border-bottom: 1px solid #333;
+                border-bottom: 2px solid var(--gold);
             }
 
             .nav-links.active {
@@ -345,11 +517,23 @@
             }
 
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
 
-            .price-card.featured {
-                transform: scale(1);
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -359,12 +543,15 @@
     <!-- HEADER -->
     <header>
         <nav class="container">
-            <a href="#" class="logo">APEX<span>IRON</span></a>
+            <a href="#" class="logo">
+                <i class="fas fa-dumbbell"></i> GOLD'S GYM
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#legacy">Our Legacy</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#" class="btn btn-gold" style="padding: 10px 25px; font-size: 0.85rem;">Join Now</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
@@ -375,125 +562,139 @@
     <!-- HERO -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Forge Your <span>Legacy</span></h1>
-            <p>State-of-the-art equipment, elite coaching, and a community that pushes you past your limits. Your transformation starts today.</p>
-            <a href="#pricing" class="btn">Start Free Trial</a>
+            <h1>STRONGER <span>STARTS HERE</span></h1>
+            <p>For over 60 years, Gold's Gym has been the Mecca of Bodybuilding. Join the global community where legends are made and transformations happen.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-gold">Join Now</a>
+                <a href="#locations" class="btn btn-outline">Find a Club</a>
+            </div>
         </div>
     </section>
 
-    <!-- PROGRAMS -->
-    <section id="programs">
+    <!-- LEGACY SECTION -->
+    <section class="legacy" id="legacy">
         <div class="container">
-            <h2 class="section-title">Our Programs</h2>
-            <p class="section-subtitle">Tailored training for every goal, from beginner to advanced athlete.</p>
-            
-            <div class="programs-grid">
-                <div class="program-card">
+            <div class="legacy-grid">
+                <div class="legacy-image">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vintage Gold's Gym Vibe">
+                    <div class="legacy-badge">Est. 1965<br>Venice Beach</div>
+                </div>
+                <div class="legacy-content">
+                    <h2>60 YEARS OF <span>SERIOUS TRAINING</span></h2>
+                    <p>From its humble beginnings in Venice Beach, California, Gold's Gym has grown into a global fitness icon. We pioneered life-changing transformations and unparalleled achievements, spanning six continents and inspiring millions.</p>
+                    <p>Whether you're stepping into a gym for the first time or preparing for the stage, our heritage of hardcore training and unwavering support is built into every square foot of our clubs.</p>
+                    <div class="quote">
+                        "When I came here, I had no money, Joe let me train in his studio anyway for free."
+                        <span>— Arnold Schwarzenegger</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAINING PILLARS -->
+    <section class="training" id="training">
+        <div class="container">
+            <div class="section-header">
+                <h2>TRAINING AT <span>GOLD'S GYM</span></h2>
+                <p>Everything you need to reach your peak performance, backed by expert guidance and world-class facilities.</p>
+            </div>
+            <div class="training-grid">
+                <div class="training-card">
+                    <i class="fas fa-user-ninja"></i>
+                    <h3>Personal Training</h3>
+                    <p>Achieve your fitness goals with customized workout plans. Our certified trainers offer expert guidance to help you reach peak performance and track your progress.</p>
+                </div>
+                <div class="training-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Group Classes</h3>
+                    <p>Push your limits and have fun with our energizing group fitness classes. From cycling to HIIT and Yoga, our expert instructors will keep you motivated.</p>
+                </div>
+                <div class="training-card">
                     <i class="fas fa-dumbbell"></i>
-                    <h3>Strength & Power</h3>
-                    <p>Build raw strength and muscle mass with our comprehensive powerlifting and bodybuilding routines.</p>
-                </div>
-                <div class="program-card">
-                    <i class="fas fa-fire-flame-curved"></i>
-                    <h3>HIIT & Cardio</h3>
-                    <p>Torch calories and improve your cardiovascular health with high-intensity interval training.</p>
-                </div>
-                <div class="program-card">
-                    <i class="fas fa-person-running"></i>
-                    <h3>Athletic Performance</h3>
-                    <p>Sport-specific conditioning to enhance your speed, agility, and on-field performance.</p>
-                </div>
-                <div class="program-card">
-                    <i class="fas fa-spa"></i>
-                    <h3>Recovery & Mobility</h3>
-                    <p>Yoga, stretching, and mobility work to keep your body resilient and injury-free.</p>
+                    <h3>Elite Equipment</h3>
+                    <p>Train with the best. Gold's Gym is equipped with cutting-edge machines, heavy free weights, and specialized zones designed for every athlete's goal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="pricing">
+    <!-- STATS SECTION -->
+    <section class="stats">
         <div class="container">
-            <h2 class="section-title">Membership Plans</h2>
-            <p class="section-subtitle">No hidden fees. No long-term contracts. Just results.</p>
-            
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Rookie</h3>
-                    <div class="price">$29<span>/month</span></div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Access to gym floor</li>
-                        <li><i class="fas fa-check"></i> Locker room access</li>
-                        <li><i class="fas fa-check"></i> Free WiFi</li>
-                        <li><i class="fas fa-check"></i> 1 Guest pass / month</li>
-                    </ul>
-                    <a href="#" class="btn" style="background: #333; width: 100%;">Choose Plan</a>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>60+</h3>
+                    <p>Years of Legacy</p>
                 </div>
-
-                <div class="price-card featured">
-                    <h3>Athlete</h3>
-                    <div class="price">$59<span>/month</span></div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Everything in Rookie</li>
-                        <li><i class="fas fa-check"></i> Unlimited Group Classes</li>
-                        <li><i class="fas fa-check"></i> Sauna & Steam Room</li>
-                        <li><i class="fas fa-check"></i> Nutrition Consultation</li>
-                    </ul>
-                    <a href="#" class="btn" style="width: 100%;">Choose Plan</a>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Locations Worldwide</p>
                 </div>
-
-                <div class="price-card">
-                    <h3>Titan</h3>
-                    <div class="price">$99<span>/month</span></div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Everything in Athlete</li>
-                        <li><i class="fas fa-check"></i> 4x Personal Training / mo</li>
-                        <li><i class="fas fa-check"></i> Custom Meal Plans</li>
-                        <li><i class="fas fa-check"></i> 24/7 VIP Access</li>
-                    </ul>
-                    <a href="#" class="btn" style="background: #333; width: 100%;">Choose Plan</a>
+                <div class="stat-item">
+                    <h3>30+</h3>
+                    <p>Countries</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1M+</h3>
+                    <p>Members Strong</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>READY TO START YOUR TRANSFORMATION?</h2>
+            <p>Get a free 3-day pass and experience the Gold's Gym difference today.</p>
+            <a href="#" class="btn btn-black">Claim Your Free Pass</a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="contact">
+    <footer id="locations">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Apex Iron</h4>
-                    <p>More than a gym. A community dedicated to helping you become the strongest version of yourself.</p>
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
+                        <i class="fas fa-dumbbell"></i> GOLD'S GYM
+                    </a>
+                    <p>The Mecca of Bodybuilding. For six decades, we've been at the forefront of fitness, pioneering life-changing transformations and unparalleled achievements.</p>
                     <div class="socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <a href="#programs">Programs</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#">Class Schedule</a>
-                    <a href="#">Careers</a>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Legacy</a></li>
+                        <li><a href="#">Franchising</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Blvd, NY 10001</p>
-                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> info@apexiron.com</p>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Find a Club</a></li>
+                        <li><a href="#">Class Schedule</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Hours</h4>
-                    <p>Mon - Fri: 5:00 AM - 11:00 PM</p>
-                    <p>Sat - Sun: 7:00 AM - 9:00 PM</p>
-                    <p style="color: var(--accent); font-weight: 500;">Titan Members: 24/7</p>
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 8px;"></i> 360 Hampton Dr, Venice, CA 90291</p>
+                    <p><i class="fas fa-phone" style="color: var(--gold); margin-right: 8px;"></i> (800) 444-6537</p>
+                    <p><i class="fas fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> info@goldsgym.com</p>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2026 Apex Iron Gym. All Rights Reserved. | Forged with sweat and steel.
+                &copy; 2026 Gold's Gym International, Inc. All Rights Reserved. | Stronger Starts Here.
             </div>
         </div>
     </footer>
@@ -513,6 +714,18 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.5)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>
